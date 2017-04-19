@@ -1,20 +1,21 @@
 InstantClick.on('change', function(){
     lazyload();
-    ajaxComment();
-    ajaxCommentPage();
+    hljs.initHighlighting();
 });
 
 $( document ).ready(function() {
-  commentShow();
-  hljs.initHighlighting();
+  ajaxComment();
+  ajaxCommentPage()
   particleInit();
   setPostImage();
   postToc();
+  commentShow();
 });
 
 $(window).load(function(){
   console.log('hello');
 });
+
 // particle.js settings
 var particleInit = function(){
 	particlesJS('particles-bg', {
@@ -210,12 +211,19 @@ var postToc = function(){
 
 
 var commentShow = function(){
-  $('.comment-cover,.comment-reply a').on("click", function(){
-    $('.comment-cover').addClass("fadeOut");
-    $(".comment-inputcontent").addClass("highfree");
+  $("#comments .comment-cover").on("click", function(){
+    $(this).addClass("fadeOut");
+    $("#comment-form .comment-inputcontent").addClass("highfree");
     $("#textarea").focus();
     $("#comment-input-secondary").addClass("fadeIn animation-delay");
   });
+    $('#comment-main .comment-reply a').on('click', function(){
+    $('#comment-main .comment-cover').addClass('fadeOut');
+    $('#comment-form .comment-inputcontent').addClass('highfree');
+    $('#textarea').focus();
+    $('#comment-input-secondary').addClass('fadeIn animation-delay');
+  });
+
 }
 
 
@@ -263,15 +271,17 @@ var ajaxComment = function(){
            return false;
      },
      success: function(data) {
-      $('#loading').removeClass().addClass('fadeOut');
       try {
        if($(data).index("<html>") < 0){
+           $('#loading').removeClass().addClass('fadeOut');
            $('#toosoon').removeClass().addClass('fadeIn');
            closeToosoon();
            $('#comment-input-secondary .comment-submit button').removeAttr('disabled');
        }else{
           var data = $(data).find('#comments .comment-list li').first().addClass('fadeIn');
           $('#comments .comment-list').prepend(data);
+          $('#loading').removeClass().addClass('fadeOut');
+          $('#comment-input-secondary .comment-submit button').removeAttr('disabled');
        }
 
       } catch (e) {

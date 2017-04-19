@@ -1,11 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php
-if(isset($_GET["action"]) && $_GET["action"] == "ajax_comments"){
-    $this->need('comments.php');
-}else{
-    if(strpos($_SERVER["PHP_SELF"],"themes")) header('Location:/');
-    $this->need('header.php');
-?>
+<?php $this->need('header.php'); ?>
+
 
     <div id="midtone-banner">
         <div class="container">
@@ -33,7 +28,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "ajax_comments"){
                 <div class="post-inner-tags"><?php _e(''); ?><?php $this->tags('', true, 'none'); ?></div>
             </div>
             <div class="post-copyrights">
-                <span><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>本作品采用<a class="midtone-link" rel="license" href="http://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>进行许可。</span></br>
+                <span><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="<?php $this->options->themeUrl('img/80x15.png'); ?>" /></a>本作品采用<a class="midtone-link" rel="license" href="http://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>进行许可。</span></br>
                 <span>本站所有文章除注明“转载”，其他均为原创，转载前请务必署名并附上文章链接。</span></br>
                 <span>本文地址：</span><a class="midtone-link" href="<?php $this->permalink() ?>"><span><?php $this->permalink() ?></span></a>
             </div>
@@ -46,6 +41,4 @@ if(isset($_GET["action"]) && $_GET["action"] == "ajax_comments"){
     </div>
 </div>
 </div>
-
-<?php }?>
 <?php $this->need('footer.php'); ?>

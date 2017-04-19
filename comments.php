@@ -55,7 +55,7 @@ $comments->alt(' comment-odd', ' comment-even');
                     ?>
                 <?php $comments->content(); ?>
             </div>
-            <div class="comment-replybody"><span class="comment-date" alt="<?php $comments->permalink(); ?>"><?php $comments->date('M d, Y'); ?></span><span class="comment-reply" data-no-instant><?php $comments->reply(); ?></span></div>
+            <div class="comment-replybody"><span class="comment-date" alt="<?php $comments->permalink(); ?>"><?php $comments->date('M d, Y'); ?></span><span class="comment-reply"  data-no-instant><?php $comments->reply(); ?></span></div>
         </div>
         </div>
         <div class="comment-avatar <?php echo $commentClass; ?>">
@@ -80,7 +80,7 @@ $comments->alt(' comment-odd', ' comment-even');
 </li>
 <?php } ?>
 
-<div id="comments" data-no-instant>
+<div id="comments">
     <?php $this->comments()->to($comments); ?>
         <div class="comment-title">
             <h3><?php $this->commentsNum(_t('No Comment'), _t('1 Comment'), _t('%d Comments')); ?></h3>
@@ -92,10 +92,10 @@ $comments->alt(' comment-odd', ' comment-even');
         <div id="toosoon"><h5>您的发言过快...</h5>
         <span class="btn btn-grey toosoon-close">休息一会儿</span>
         </div>
-        <div class="cancel-comment-reply">
+        <div class="cancel-comment-reply"  data-no-instant>
             <?php $comments->cancelReply(); ?>
         </div>
-        <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form" data-no-instant>
+        <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form"  data-no-instant>
             <?php if($this->user->hasLogin()): ?>
             <div class="comment-inputcontent input-text">
                <textarea rows="8" cols="50" name="text" id="textarea" class="textarea" required ><?php $this->remember('text'); ?></textarea>
@@ -104,7 +104,6 @@ $comments->alt(' comment-odd', ' comment-even');
             <?php _e('登录身份: '); ?><a class="midtone-link" href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a><a class="comment-logout" href="<?php $this->options->logoutUrl(); ?>" title="Logout"><?php _e('退出'); ?></a>
             </div>
             <?php else: ?>
-
             <div class="comment-inputcontent input-text">
                <div class="comment-cover"><i class="iconfont icon-comment"></i><span>LEAVE A COMMENT</span></div>
                <textarea rows="8" cols="50" name="text" id="textarea" class="textarea" required ><?php $this->remember('text'); ?></textarea>
@@ -129,11 +128,8 @@ $comments->alt(' comment-odd', ' comment-even');
     <?php endif; ?>
 </div>
     <?php if ($comments->have()): ?>
-<div id="comment-main" data-no-instant>
+<div id="comment-main">
     <?php $comments->listComments(); ?>
     <?php $comments->pageNav('<', '>','2', '...'); ?>
 </div>
     <?php endif; ?>
-
-
-
