@@ -65,10 +65,10 @@ function theNext($widget, $default = NULL){
 
     if ($content) {
     $content = $widget->filter($content);
-    $link = '<a class="next col-6" href="' . $content['permalink'] . '" title="' . $content['title'] . '"><h3>NEXT</h3><span>' . $content['title'] . '</span></a>';
+    $link = '<div class="next col-6"><a href="' . $content['permalink'] . '" title="' . $content['title'] . '"><span class="btn btn-grey">NEXT</span></a><span class="page-next-link" >' . $content['title'] . '</span></div>';
     echo $link;
     } else {
-    $nomorenext = '<div class="next col-6"><h3>NEXT</h3><span>no more</span></div>';
+    $nomorenext = '<div class="next col-6"></div>';
     echo $nomorenext;
     }
 }
@@ -87,10 +87,10 @@ function thePrev($widget, $default = NULL){
 
     if ($content) {
     $content = $widget->filter($content);
-    $link = '<a class="prev col-6" href="' . $content['permalink'] . '" title="' . $content['title'] . '"><h3>PREV</h3><span>' . $content['title'] . '</span></a>';
+    $link = '<div class="prev col-6"><a href="' . $content['permalink'] . '" title="' . $content['title'] . '"><span class="btn btn-grey">PREV</span></a><span class="page-prev-link" >' . $content['title'] . '</span></div>';
     echo $link;
     } else {
-    $nomoreprev = '<div class="prev col-6"><h3>PREV</h3><span>no more</span></div>';
+    $nomoreprev = '<div class="prev col-6"></div>';
     echo $nomoreprev;
     }
 }

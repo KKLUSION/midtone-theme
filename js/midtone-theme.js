@@ -1,19 +1,26 @@
 InstantClick.on('change', function(){
+      postIndicator();
     lazyload();
-    hljs.initHighlighting();
+     var blocks = document.querySelectorAll('pre code');
+      for (var i = 0; i < blocks.length; i++) {
+        hljs.highlightBlock(blocks[i]);
+      }
 });
 
 $( document ).ready(function() {
+  titleFading();
+  hljs.initHighlighting();
   ajaxComment();
   ajaxCommentPage()
   particleInit();
   setPostImage();
   postToc();
+  menublock();
   commentShow();
 });
 
 $(window).load(function(){
-  console.log('hello');
+
 });
 
 // particle.js settings
@@ -189,7 +196,8 @@ var postToc = function(){
 	    // check if the index is empty
 	    indexelements = toc.getElementsByTagName("li");
 	    if(indexelements.length == 0){
-	        document.getElementById("toc").remove();
+          var toc = document.getElementById("toc");
+	        toc.parentNode.removeChild(toc);
 	    }
 	}
 
@@ -223,41 +231,50 @@ var commentShow = function(){
     $('#textarea').focus();
     $('#comment-input-secondary').addClass('fadeIn animation-delay');
   });
-
+    $('#pagenavi .next a').hover(function(){
+      $('.page-next-link').toggleClass('page-link-loaded');
+    });
+    $('#pagenavi .prev a').hover(function(){
+      $('.page-prev-link').toggleClass('page-link-loaded');
+    });
 }
 
 
 var ajaxComment = function(){
-
-        $('#comment-input-secondary .comment-submit button').on('click', function(){
-             $('.comment-name,.comment-mail,.comment-inputcontent').removeClass('warning');
-            if ($('#comment-input-secondary').find('#author')[0]) {
-            if ($('.comment-name').find('#author').val() == '') {
-                $('.comment-name').addClass('warning');
-                warningFocus();
-                return false;
-            }
-            if ($('.comment-mail').find('#mail').val() == '') {
-                $('.comment-mail').addClass('warning');
-                warningFocus();
-                return false;
-            }
-            var filter = /^[^@\s<&>]+@([a-z0-9]+\.)+[a-z]{2,4}$/i;
-            if (!filter.test($('.comment-mail').find('#mail').val())) {
-                $('.comment-mail').addClass('warning');
-                warningFocus();
-                return false;
-            }
-        }
-        if ($('.comment-inputcontent').find('#textarea').val() == '') {
-            $('.comment-inputcontent').addClass('warning');
+  $('#comment-input-secondary .comment-submit button').on('click',function(){
+    $('#comment-input-secondary .comment-submit button').attr('disabled', true);
+       $('.comment-name,.comment-mail,.comment-inputcontent').removeClass('warning');
+    if ($('#comment-input-secondary').find('#author')[0]) {
+        if ($('.comment-name').find('#author').val() == '') {
+            $('.comment-name').addClass('warning');
             warningFocus();
+            enableBtn();
             return false;
         }
-      });
+        if ($('.comment-mail').find('#mail').val() == '') {
+            $('.comment-mail').addClass('warning');
+            warningFocus();
+            enableBtn();
+            return false;
+        }
+        var filter = /^[^@\s<&>]+@([a-z0-9]+\.)+[a-z]{2,4}$/i;
+        if (!filter.test($('.comment-mail').find('#mail').val())) {
+            $('.comment-mail').addClass('warning');
+            warningFocus();
+            enableBtn();
+            return false;
+        }
+        enableBtn();
+    }
+    if ($('.comment-inputcontent').find('#textarea').val() == '') {
+        $('.comment-inputcontent').addClass('warning');
+        warningFocus();
+        enableBtn();
+        return false;
+    }
+  });
 
-
-  $(document).on('submit', '#comment-form', function() {
+  $('#comment-form').submit(function() {
    $('#comment-input-secondary .comment-submit button').attr('disabled', true);
    $('#loading').removeClass().addClass('fadeIn');
    $.ajax({
@@ -276,12 +293,12 @@ var ajaxComment = function(){
            $('#loading').removeClass().addClass('fadeOut');
            $('#toosoon').removeClass().addClass('fadeIn');
            closeToosoon();
-           $('#comment-input-secondary .comment-submit button').removeAttr('disabled');
+           enableBtn();
        }else{
           var data = $(data).find('#comments .comment-list li').first().addClass('fadeIn');
           $('#comments .comment-list').prepend(data);
           $('#loading').removeClass().addClass('fadeOut');
-          $('#comment-input-secondary .comment-submit button').removeAttr('disabled');
+          enableBtn();
        }
 
       } catch (e) {
@@ -293,6 +310,10 @@ var ajaxComment = function(){
    });
    return false;
   });
+
+  var enableBtn = function(){
+    $('#comment-input-secondary .comment-submit button').removeAttr('disabled');
+  }
 
   var closeToosoon = function(){
     $('#toosoon').on('click', function(){
@@ -339,4 +360,51 @@ var lazyload = function(){
         $(this).removeClass('lazy').addClass('lazy-loaded');
       }
    });
+}
+
+
+var menublock = function(){
+  var $t, leftX, newWidth;
+  $('#nav-menu').append('<span class="block"></span>');
+  var $block = $('.block');
+  $block.width($(".current").width()).css('left', $('.current a').position().left).data('rightLeft', $block.position().left).data('rightWidth', $block.width());
+  $('#nav-menu li').find('a').hover(function() {
+    $t = $(this);
+    leftX = $t.position().left;
+    newWidth = $t.parent().width();
+    $block.stop().animate({
+      left: leftX,
+      width: newWidth
+    },400);
+  }, function() {
+    $block.stop().animate({
+      left: $block.data('rightLeft'),
+      width: $block.data('rightWidth')
+    },400)
+  })
+}
+
+
+var postIndicator = function(){
+
+}
+
+
+var titleFading = function(){
+
+  var fadeStart=15
+    ,fadeUntil=250
+    ,fading = $('#fading');
+
+$(window).bind('scroll', function(){
+    var offset = $(document).scrollTop()
+        ,opacity=0
+    ;
+    if( offset<=fadeStart ){
+        opacity=1;
+    }else if( offset<=fadeUntil ){
+        opacity=1-offset/fadeUntil;
+    }
+    fading.css('opacity',opacity);
+});
 }

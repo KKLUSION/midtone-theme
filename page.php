@@ -1,15 +1,29 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('header.php'); ?>
-
-<div class="col-mb-12 col-8" id="main" role="main">
-    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-        <h1 class="post-title" itemprop="name headline"><a itemtype="url" href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h1>
-        <div class="post-content" itemprop="articleBody">
-            <?php $this->content(); ?>
+    <div id="midtone-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-mb-12 col-12">
+                     <h1><?php $this->title() ?></h1>
+                     <span class="description"><?php echo $this->getDescription(); ?></span>
+                </div>
+            </div>
         </div>
-    </article>
-    <?php $this->need('comments.php'); ?>
-</div><!-- end #main-->
+    </div>
+<div class="midtone-post-wrap">
+    <div class="container post-container">
+        <div class="row">
+            <div class="post-inner-content" id="post-article" itemprop="articleBody">
+                 <div id="toc"></div>
+                <?php $this->content(); ?>
+            </div>
+            <div class="post-inner-footer">
+                <div class="post-inner-tags"><?php _e(''); ?><?php $this->tags('', true, ''); ?></div>
+            </div>
+            <?php $this->need('comments.php'); ?>
+        </div>
+    </div>
+</div>
+</div>
 
-<?php $this->need('sidebar.php'); ?>
 <?php $this->need('footer.php'); ?>
