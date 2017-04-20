@@ -7,7 +7,7 @@
                 <div class="col-mb-12 col-12">
                      <h1><?php $this->archiveTitle(array(
             'category'  =>  _t('%s'),
-            'search'    =>  _t('%s'),
+            'search'    =>  _t('# %s'),
             'tag'       =>  _t('# %s'),
             'author'    =>  _t('%s')
         ), '', ''); ?></h1>
@@ -20,8 +20,9 @@
     <div class="container midtone-postlist">
         <div class="row">
         <?php if ($this->have()): ?>
+        <div id="post-style"><span class="post-style-cubes currentstyle"><i class="iconfont icon-card"></i></span><span class="post-style-lines"><i class="iconfont icon-liebiao"></i></span></div>
         <?php while($this->next()): ?>
-            <div class="midtone-post">
+            <div class="post-article post-cube col-4 col-mb-6">
                 <h2 class="post-title" itemprop="name headline"><a itemtype="url" href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h2>
                 <div class="post-meta">
                     <span class="post-meta-dash"><?php _e(''); ?><time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date(); ?></time></span>
@@ -40,7 +41,7 @@
                 <span class="post-comments" itemprop="interactionCount"><a itemprop="discussionUrl" href="<?php $this->permalink() ?>#comments"><?php $this->commentsNum('<i class="iconfont icon-comment"></i>-', '<i class="iconfont icon-comment"></i>1', '<i class="iconfont icon-comment"></i>%d'); ?></a></span>
             </div>
         <?php endwhile; ?>
-            <div class="page-parameter">
+            <div class="page-parameter col-mb-12">
                 <span><?php if($this->_currentPage>1) echo $this->_currentPage;  else echo 1;?><?php echo ' / ';?><?php echo ceil($this->getTotal() / $this->parameter->pageSize); ?></span>
                 <?php $this->pageLink('<span class="btn btn-grey">next</span>', 'next') ?>
                 <?php $this->pageLink('<span class="btn btn-grey">prev</span>', 'prev') ?>

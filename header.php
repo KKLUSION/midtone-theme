@@ -17,7 +17,7 @@
 
     <!-- 使用url函数转换相关路径 -->
     <link rel="stylesheet" href="//cdnjscn.b0.upaiyun.com/libs/normalize/2.1.3/normalize.min.css">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_1qiijf62alhj8aor.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_58ijpzch4ew89f6r.css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/grid.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/style.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/highlight.css'); ?>">
@@ -36,7 +36,23 @@
     <div class="browsehappy" role="dialog"><?php _e('当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>'); ?>.</div>
 <![endif]-->
     <div class="wrap">
-        <div class="navigation"></div>
+        <div id="mb-navigation">
+            <a href="#" class="button-toggle-navigation">
+                <span>Toggle Navigation</span>
+            </a>
+            <ul class="mb-nav-menu">
+                <li<?php if($this->is('index')): ?> class="current"<?php endif; ?>><a href="<?php $this->options->siteUrl(); ?>"><?php _e('首页'); ?></a></li>
+                  <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
+                    <?php while ($category->next()): ?>
+                    <li<?php if ($this->is('post')): ?><?php if ($this->category == $category->slug): ?> class="current"<?php endif; ?><?php else: ?><?php if ($this->is('category', $category->slug)): ?> class="current"<?php endif; ?><?php endif; ?>><a href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a></li>
+                    <?php endwhile; ?>
+                <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
+                    <?php while($pages->next()): ?>
+                        <li<?php if($this->is('page', $pages->slug)): ?> class="current"<?php endif; ?>><a href="<?php $pages->permalink(); ?>" title="<?php $pages->title(); ?>"><?php $pages->title(); ?></a></li>
+                        <?php endwhile; ?>
+                 <li id="search-bar"><a href="javascript:void(0)"><i class="iconfont icon-search"></i></a></li>
+            </ul>
+        </div>
         <div id="header">
              <div class="head container">
                    <div class="row">
@@ -51,17 +67,7 @@
                        </div>
                        <a href="#" class="menu" title="menu"><i class="menu-bar"></i></a>
                        <ul id="nav-menu" class="col-mb-6 col-9">
-                       <li class="search-bar"><i></i>搜索</li>
-                            <div class="site-search">
-                                <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search">
-                                    <label for="s" class="sr-only"><?php _e('搜索关键字'); ?></label>
-                                    <input type="text" name="s" class="text" autoComplete="off" />
-                                </form>
-                                <div class="search-close">
-                                    <span class="bar1"></span>
-                                    <span class="bar2"></span>
-                                </div>
-                            </div>
+                       <li id="search-bar"><a href="javascript:void(0)"><i class="iconfont icon-search"></i></a></li>
                             <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
                                 <?php while($pages->next()): ?>
                                     <li<?php if($this->is('page', $pages->slug)): ?> class="current"<?php endif; ?>><a href="<?php $pages->permalink(); ?>" title="<?php $pages->title(); ?>"><?php $pages->title(); ?></a></li>
@@ -75,6 +81,17 @@
                         </ul>
                    </div>
              </div>
+        </div>
+        <div id="site-search">
+            <div class="search-input">
+                <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search">
+                    <input type="text" name="s" class="text" placeholder="请输入搜索内容并回车搜索" autoComplete="off" />
+                </form>
+            </div>
+            <div class="search-close">
+                <span class="bar1"></span>
+                <span class="bar2"></span>
+            </div>
         </div>
         <?php if (empty($this->options->enableParticles)): ?>
           <div id="particles-bg"></div>

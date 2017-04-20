@@ -2,11 +2,14 @@
 <?php if (!is_ajax()) { ?>
 
 <footer id="footer" role="contentinfo">
+<div class="container footerwrap">
+<div class="row">
     <div class="autuor-maininfo"></div>
+    <div class="footer-info"><span><a class="midtone-link" href="<?php $this->options->feedUrl(); ?>">RSS</a></span></div>
     <div class="copyrights">
-	    <span>&copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>.</span>
-	    <span><?php _e('由 <a href="http://www.typecho.org">Typecho</a> 强力驱动'); ?>.</span>
-	    <span><?php _e('Theme by <a href="https://blog.mizodo.com">mizodo</a>'); ?></span>
+	    <span>&copy; <?php echo date('Y'); ?> <a class="midtone-link" href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>.</span>
+	    <span><?php _e('Powered by <a class="midtone-link" href="http://www.typecho.org">Typecho</a>'); ?>.</span>
+	    <span><?php _e('Theme by <a class="midtone-link" href="https://blog.mizodo.com">mizodo</a>'); ?>.</span>
     </div>
 	<script src="<?php $this->options->themeUrl('js/jquery.min.js'); ?>"></script>
 	<script src="<?php $this->options->themeUrl('js/instantclick.min.js'); ?>" data-no-instant></script>
@@ -18,6 +21,8 @@
         ga('send', 'pageview', location.pathname + location.search);
 }
 </script>
+</div>
+</div>
 </footer><!-- end #footer -->
 
 <?php $this->footer(); ?>

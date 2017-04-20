@@ -62,7 +62,7 @@ $comments->alt(' comment-odd', ' comment-even');
          <?php
             $host = 'https://secure.gravatar.com';
             $url = '/avatar/';
-            $size = '50';
+            $size = '';
             $rating = Helper::options()->commentsAvatarRating;
             $hash = md5(strtolower($comments->mail));
             $avatar = $host . $url . $hash . '?s=' . $size . '&r=' . $rating . '&d=mm';
@@ -80,7 +80,7 @@ $comments->alt(' comment-odd', ' comment-even');
 </li>
 <?php } ?>
 
-<div id="comments">
+<div id="comments" class="col-12">
     <?php $this->comments()->to($comments); ?>
     <?php if($this->allow('comment')): ?>
         <div class="comment-title">
@@ -187,10 +187,11 @@ $comments->alt(' comment-odd', ' comment-even');
         <h3><?php _e('评论已关闭'); ?></h3>
     </div>
     <?php endif; ?>
-</div>
     <?php if ($comments->have()): ?>
-<div id="comment-main">
-    <?php $comments->listComments(); ?>
-    <?php $comments->pageNav('<', '>','1', '...'); ?>
+    <div id="comment-main" class="col-12">
+        <?php $comments->listComments(); ?>
+        <?php $comments->pageNav('<', '>','1', '...'); ?>
+    </div>
 </div>
+
     <?php endif; ?>
