@@ -27,23 +27,25 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 		<div class="row">
         <div id="post-style"><span class="post-style-cubes"><i class="iconfont icon-card"></i></span><span class="post-style-lines currentstyle"><i class="iconfont icon-liebiao"></i></span></div>
 		<?php while($this->next()): ?>
-			<div class="post-article midtone-post col-12 col-md-12">
-				<h2 class="post-title" itemprop="name headline"><a itemtype="url" href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h2>
-				<div class="post-meta">
-					<span class="post-meta-dash"><?php _e(''); ?><time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date(); ?></time></span>
-					<span class="post-meta-dash"><?php _e('In&nbsp;&nbsp;'); ?><?php $this->category(','); ?></span>
-					<span><?php get_post_view($this) ?><?php _e('&nbsp;&nbsp;views'); ?></span>
+			<div class="midtone-post col-12 col-md-12">
+				<div class="post-article">
+					<h2 class="post-title" itemprop="name headline"><a itemtype="url" href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h2>
+					<div class="post-meta">
+						<span class="post-meta-dash"><?php _e(''); ?><time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date(); ?></time></span>
+						<span class="post-meta-dash"><?php _e('In&nbsp;&nbsp;'); ?><?php $this->category(','); ?></span>
+						<span><?php get_post_view($this) ?><?php _e('&nbsp;&nbsp;views'); ?></span>
+					</div>
+					<?php if(isset($this->fields->post_cover)){  ?>
+					<div class="post-cover">
+							<img src="<?php echo $this->fields->post_cover;?>"/>
+					</div>
+					<?php };?>
+					<div class="post-content" itemprop="articleBody">
+		    			<a itemtype="url" href="<?php $this->permalink() ?>"><?php $this->excerpt(300, '...'); ?></a>
+		            </div>
+		            <a href="<?php $this->permalink() ?>"><button class="btn btn-primary">Read On</button></a>
+		            <span class="post-comments" itemprop="interactionCount"><a itemprop="discussionUrl" href="<?php $this->permalink() ?>#comments"><?php $this->commentsNum('<i class="iconfont icon-comment"></i>-', '<i class="iconfont icon-comment"></i>1', '<i class="iconfont icon-comment"></i>%d'); ?></a></span>
 				</div>
-				<?php if(isset($this->fields->post_cover)){  ?>
-				<div class="post-cover">
-						<img src="<?php echo $this->fields->post_cover;?>"/>
-				</div>
-				<?php };?>
-				<div class="post-content" itemprop="articleBody">
-	    			<a itemtype="url" href="<?php $this->permalink() ?>"><?php $this->excerpt(300, '...'); ?></a>
-	            </div>
-	            <a href="<?php $this->permalink() ?>"><button class="btn btn-primary">Read On</button></a>
-	            <span class="post-comments" itemprop="interactionCount"><a itemprop="discussionUrl" href="<?php $this->permalink() ?>#comments"><?php $this->commentsNum('<i class="iconfont icon-comment"></i>-', '<i class="iconfont icon-comment"></i>1', '<i class="iconfont icon-comment"></i>%d'); ?></a></span>
 			</div>
 		<?php endwhile; ?>
 			<div class="page-parameter col-12 col-md-12">

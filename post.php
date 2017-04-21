@@ -20,6 +20,11 @@
 <div class="midtone-post-wrap">
     <div class="container post-container">
         <div class="row">
+            <div id="totop">
+                <a class="totop-btn" href="javascript:void(0);"><i class="iconfont icon-up"></i></a>
+                <a href="#comments"><i class="iconfont icon-comment"></i></a>
+                <a class="article-qr" href="javascript:void(0);"><i class="iconfont icon-qr"></i><div class="article-qrbody"><img src="https://pan.baidu.com/share/qrcode?w=120&h=120&url=<?php $this->permalink() ?>" alt="<?php $this->permalink() ?>"></div></a>
+            </div>
             <div class="post-inner-content col-12" id="post-article" itemprop="articleBody">
                  <div id="toc"></div>
                 <?php $this->content(); ?>
@@ -39,11 +44,6 @@
                 <?php theNext($this); ?>
             </div>
             <?php $this->need('comments.php'); ?>
-             <div id="totop">
-                <a class="totop-btn" href="javascript:void(0);"><i class="iconfont icon-up"></i></a>
-                <a href="#comments"><i class="iconfont icon-comment"></i></a>
-                <a class="article-qr" href="javascript:void(0);"><i class="iconfont icon-qr"></i><div class="article-qrbody"><img src="https://pan.baidu.com/share/qrcode?w=120&h=120&url=<?php $this->permalink() ?>" alt="<?php $this->permalink() ?>"></div></a>
-            </div>
         </div>
 
     </div>

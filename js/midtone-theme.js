@@ -4,6 +4,7 @@ InstantClick.on('change', function(){
       for (var i = 0; i < blocks.length; i++) {
         hljs.highlightBlock(blocks[i]);
       }
+     defaultStyle();
 });
 
 $( document ).ready(function() {
@@ -401,15 +402,38 @@ var menublock = function(){
 
 var postListStyle = function(){
   $('#post-style .post-style-lines').on('click', function(){
-    $('#post-style .post-style-cubes').removeClass('currentstyle');
-    $(this).addClass('currentstyle');
-    $('.post-article').removeClass('post-cube col-4 col-mb-6').addClass('midtone-post col-12 col-md-12');
+    $(this).addClass('currentstyle').siblings().removeClass('currentstyle');
+    $('.post-article').parent().removeClass().addClass('midtone-post col-12 col-md-12');
+    var style = 'midtone-post col-12 col-md-12';
+    var iscurrent = false;
+    localStorage.setItem("list_style",style);
+    localStorage.setItem("list_current",iscurrent);
   });
   $('#post-style .post-style-cubes').on('click', function(){
-    $('#post-style .post-style-lines').removeClass('currentstyle');
-    $(this).addClass('currentstyle');
-    $('.post-article').removeClass('midtone-post col-12 col-md-12').addClass('post-cube col-4 col-mb-6');
+    $(this).addClass('currentstyle').siblings().removeClass('currentstyle');
+    $('.post-article').parent().removeClass().addClass('post-cube col-4 col-mb-6');
+    var style = 'post-cube col-4 col-mb-6';
+    var iscurrent = true;
+    localStorage.setItem("list_style",style);
+    localStorage.setItem("list_current",iscurrent);
   });
+
+}
+
+var defaultStyle = function(){
+  var nowstyle = localStorage.getItem("list_style");
+  var nowCurrent = localStorage.getItem("list_current");
+  console.log(typeof nowCurrent);
+  if(nowstyle){
+    $('.post-article').parent().removeClass().addClass(nowstyle);
+  }else{
+    return false;
+  }
+  if(nowCurrent == 'true'){
+    $('#post-style .post-style-cubes').addClass('currentstyle').siblings().removeClass('currentstyle');
+  }else{
+    $('#post-style .post-style-lines').addClass('currentstyle').siblings().removeClass('currentstyle');
+  }
 }
 
 
