@@ -7,7 +7,8 @@ InstantClick.on('change', function(){
      defaultStyle();
 });
 
-$( document ).ready(function() {
+$(document).ready(function() {
+  hello();
   postListStyle();
   moblieMenu();
   searchBar();
@@ -21,10 +22,6 @@ $( document ).ready(function() {
   postToc();
   menublock();
   commentShow();
-});
-
-$(window).load(function(){
-
 });
 
 // particle.js settings
@@ -423,7 +420,6 @@ var postListStyle = function(){
 var defaultStyle = function(){
   var nowstyle = localStorage.getItem("list_style");
   var nowCurrent = localStorage.getItem("list_current");
-  console.log(typeof nowCurrent);
   if(nowstyle){
     $('.post-article').parent().removeClass().addClass(nowstyle);
   }else{
@@ -488,5 +484,17 @@ var moblieMenu = function(){
   $('#mb-navigation .button-toggle-navigation').on('click', function() {
     $(this).toggleClass('isActive');
     $('.mb-nav-menu').toggleClass('slideDown');
+  });
+}
+
+var hello = function(){
+  $(document).keydown(function() {
+    if(event.keyCode==123){
+     console.clear();
+     console.log('theme design and code with <3 by mizodo.');
+     console.log('for more infomation click https://blog.mizodo.com');
+  }else{
+    return false;
+  }
   });
 }

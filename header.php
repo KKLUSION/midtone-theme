@@ -18,10 +18,10 @@
     <!-- 使用url函数转换相关路径 -->
     <link rel="stylesheet" href="//cdnjscn.b0.upaiyun.com/libs/normalize/2.1.3/normalize.min.css">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_58ijpzch4ew89f6r.css">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/grid.css'); ?>">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/style.css'); ?>">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/highlight.css'); ?>">
-    <script src="<?php $this->options->themeUrl('js/rem.js'); ?>"></script>
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('dist/css/grid.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('dist/css/style.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('dist/css/highlight.css'); ?>">
+    <script src="<?php $this->options->themeUrl('dist/js/rem.js'); ?>"></script>
 
     <!--[if lt IE 9]>
     <script src="//cdnjscn.b0.upaiyun.com/libs/html5shiv/r29/html5.min.js"></script>

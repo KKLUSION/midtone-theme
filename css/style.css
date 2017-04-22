@@ -90,7 +90,7 @@ a{text-decoration: none;position: relative;}
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #444;
+  background-color: #555;
   z-index: 999;
   display: none;
 }
@@ -105,7 +105,7 @@ a{text-decoration: none;position: relative;}
 #mb-navigation .mb-nav-menu li{height: 0.8rem;line-height: 0.8rem;background-color: #999;}
 #mb-navigation .mb-nav-menu li a{display:block;padding:0rem 0.4rem;width: 100%;color: #fff;}
 #mb-navigation .mb-nav-menu:after{content: '';position: absolute;width: 106%;height: 0.8rem;background-color: #999;bottom: -0.4rem;left: 50%;transform: rotate(-2deg);-webkit-transform: rotate(-2deg);margin-left: -53%;z-index: -1;}
-#mb-navigation .current{background-color: #444!important;}
+#mb-navigation .current{background-color: #555!important;}
 .button-toggle-navigation {
   display: inline-block;
   background-color: transparent;
@@ -178,11 +178,11 @@ a{text-decoration: none;position: relative;}
 .midtone-post-wrap:before{content: '';position: absolute;width: 105%;height: 3rem;background-color: #fff;top: -0.8rem;left: 50%;transform: rotate(-2deg);-webkit-transform: rotate(-2deg);margin-left: -50%;z-index: -1;}
 .midtone-postlist{max-width: 14.8rem;padding-bottom: 1.0rem;}
 .midtone-post{border-bottom: 0.02rem solid #FBFBFB;padding:0rem 0rem 1.0rem 0rem!important;margin:0.5rem 0rem;width: 100%;}
-.post-title{font-size: 0.48rem;font-weight: 700;padding: 0;margin: 0;}
+.post-title{font-size: 0.48rem;font-weight: 700;padding: 0;margin: 0;position: relative;z-index: 3;}
 .post-title a{color: #444;transition:all 0.3s ease;-webkit-transition:all 0.3s ease;}
 .post-title a:hover{color: #ff5555;}
 .post-cover{width: 100%;max-height:8.0rem;overflow:hidden;margin: 0.6rem 0rem 0.3rem 0rem;}
-.post-cover img{padding: 0;margin: 0;max-width: 100%;border-radius: 0.08rem;}
+.post-cover img{padding: 0;margin: 0;width: 100%;border-radius: 0.08rem;}
 .post-meta{margin: 0.2rem 0rem 0.6rem 0rem;font-size: 0.24rem;}
 .post-meta span{margin-right: 0.42rem;position: relative;color: #b4b4b4;}
 .post-meta-dash:after{content: '';position: absolute;height: 0.24rem;width: 0.02rem;top: 0rem;right: -0.2rem;background-color: #ebebeb;}
@@ -527,7 +527,7 @@ a{text-decoration: none;position: relative;}
   #mb-navigation{
     display: block;
   }
-  .footer-info,.head{
+  #post-style,.footer-info,.head{
     display: none;
   }
   .footerwrap,.post-comments{

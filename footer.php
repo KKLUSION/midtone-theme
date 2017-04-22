@@ -11,12 +11,12 @@
 	    <span><?php _e('Powered by <a class="midtone-link" href="http://www.typecho.org">Typecho</a>'); ?>.</span>
 	    <span><?php _e('Theme by <a class="midtone-link" href="https://blog.mizodo.com">mizodo</a>'); ?>.</span>
     </div>
-	<script src="<?php $this->options->themeUrl('js/jquery.min.js'); ?>"></script>
-	<script src="<?php $this->options->themeUrl('js/instantclick.min.js'); ?>" data-no-instant></script>
-    <script src="<?php $this->options->themeUrl('js/lazyload.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('js/particles.min.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('js/highlight.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('js/midtone-theme.js'); ?>"></script>
+	<script src="<?php $this->options->themeUrl('dist/js/jquery.min.js'); ?>"></script>
+	<script src="<?php $this->options->themeUrl('dist/js/instantclick.min.js'); ?>" data-no-instant></script>
+    <script src="<?php $this->options->themeUrl('dist/js/lazyload.js'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('dist/js/particles.min.js'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('dist/js/highlight.min.js'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('dist/js/midtone-theme.js'); ?>"></script>
     <script data-no-instant>InstantClick.init();if (typeof ga !== 'undefined'){
         ga('send', 'pageview', location.pathname + location.search);
 }
