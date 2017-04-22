@@ -16,8 +16,8 @@ function themeConfig($form) {
     $form->addInput($sidebarBlock->multiMode());
 
     $enableParticles = new Typecho_Widget_Helper_Form_Element_Checkbox('enableParticles',
-        array('enableParticle' => _t('关闭背景粒子效果')),
-        array('enableParticle'), _t('是否关闭背景粒子效果(默认开启)'));
+        array('enableParticle' => _t('开启')),
+        array('enableParticle'), _t('是否开启背景粒子效果(默认开启)'));
 
     $form->addInput($enableParticles);
 }

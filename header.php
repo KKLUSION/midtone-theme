@@ -57,13 +57,13 @@
              <div class="head container">
                    <div class="row">
                        <div id="midtone-logo" class="col-mb-6 col-3">
-                             <?php if ($this->options->logoUrl): ?>
-                                   <a href="<?php $this->options->siteUrl(); ?>">
-                                    <img src="<?php $this->options->logoUrl() ?>" alt="<?php $this->options->title() ?>" />
-                                   </a>
-                             <?php else: ?>
-                                   <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title() ?></a>
-                             <?php endif; ?>
+                         <?php if ($this->options->logoUrl): ?>
+                               <a href="<?php $this->options->siteUrl(); ?>">
+                                <img src="<?php $this->options->logoUrl() ?>" alt="<?php $this->options->title() ?>" />
+                               </a>
+                         <?php else: ?>
+                               <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title() ?></a>
+                         <?php endif; ?>
                        </div>
                        <a href="#" class="menu" title="menu"><i class="menu-bar"></i></a>
                        <ul id="nav-menu" class="col-mb-6 col-9">
@@ -93,7 +93,7 @@
                 <span class="bar2"></span>
             </div>
         </div>
-        <?php if (empty($this->options->enableParticles)): ?>
+        <?php if (!empty($this->options->enableParticles)): ?>
           <div id="particles-bg"></div>
         <?php endif; ?>
 <?php } ?>

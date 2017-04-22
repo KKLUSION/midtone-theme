@@ -1,5 +1,14 @@
 /*common setting*/
-html{font-size: 12px;}
+html{font-size: 12px;
+-webkit-backface-visibility: hidden;
+-moz-backface-visibility: hidden;
+-ms-backface-visibility: hidden;
+backface-visibility: hidden;
+
+-webkit-perspective: 1000;
+-moz-perspective: 1000;
+-ms-perspective: 1000;
+perspective: 1000; }
 body{font-size: 0.28rem;font-family: arial;}
 ul{list-style: none;margin: 0;padding: 0;}
 button:focus,input:focus,a:focus{outline: 0;}
@@ -82,6 +91,10 @@ a{text-decoration: none;position: relative;}
 .search-close .bar1{-webkit-transform: rotate(135deg);transform: rotate(135deg);}
 .search-close .bar2{-webkit-transform: rotate(-135deg);transform: rotate(-135deg);}
 .search-close:hover .bar1,.search-close:hover .bar2{background-color: #444;transition:all 0.3s ease;-webkit-transition:all 0.3s ease;}
+.mizodo-logo{color: #000!important;}
+.mizodo-logo span{font-weight: 700;font-size: 0.4rem;display: inline-block;}
+.mizodo-logo .mizodo-logo-dash{color: #ff5555;position: relative;animation: mizodologo 6s linear infinite;-webkit-animation: mizodologo 6s linear infinite;}
+.mizodo-logo .mizodo-logo-dash:after{content: '';position: absolute;height: 0.06rem;width: 100%;left: 0;bottom:0.35rem;background-color: #ff5555;animation: mizodologodash 6s linear infinite;-webkit-animation: mizodologodash 6s linear infinite;}
 
 /*mobile menu*/
 #mb-navigation{
@@ -226,7 +239,7 @@ a{text-decoration: none;position: relative;}
 .post-inner-meta span{margin-right: 0.42rem;position: relative;color: #999;}
 .post-inner-meta-dash:after{content: '';position: absolute;height: 0.24rem;width: 0.02rem;top: 0rem;right: -0.2rem;background-color: #CECECE;}
 .post-container{max-width: 14.8rem;margin-top: 1.6rem;}
-.post-inner-content{padding-top: 0.6rem;}
+.post-inner-content{padding-top: 0.6rem;min-height: 4.0rem;}
 .post-inner-content p{padding: 0rem 0.8rem;color: #444;font-size: 0.32rem;line-height: 1.5em;text-align: justify;display: inline-block;}
 .post-inner-content pre{display: inline-block;padding:0 0.8rem;}
 .post-inner-content code{padding: 0.3rem 0.3rem;border-radius: 4px;}
@@ -446,6 +459,75 @@ a{text-decoration: none;position: relative;}
     opacity: 1;
   }
 }
+@keyframes mizodologo{
+  0%{
+    color: #ff5555;
+  }
+  25%{
+    color: #ffd200;
+  }
+  50%{
+    color: #26cc00;
+  }
+  75%{
+    color: #7d29e5;
+  }
+  100%{
+    color: #ff5555;
+  }
+}
+@-webkit-keyframes mizodologo{
+  0%{
+    color: #ff5555;
+  }
+  25%{
+    color: #ffd200;
+  }
+  50%{
+    color: #26cc00;
+  }
+  75%{
+    color: #7d29e5;
+  }
+  100%{
+    color: #ff5555;
+  }
+}
+@-webkit-keyframes mizodologodash{
+  0%{
+    background-color: #ff5555;
+  }
+  25%{
+    background-color: #ffd200;
+  }
+  50%{
+    background-color: #26cc00;
+  }
+  75%{
+    background-color: #7d29e5;
+  }
+  100%{
+    background-color: #ff5555;
+  }
+}
+@keyframes mizodologodash{
+  0%{
+    background-color: #ff5555;
+  }
+  25%{
+    background-color: #ffd200;
+  }
+  50%{
+    background-color: #26cc00;
+  }
+  75%{
+    background-color: #7d29e5;
+  }
+  100%{
+    background-color: #ff5555;
+  }
+}
+
 
 /*timeline*/
 .timeline-year{position: relative;}
@@ -463,7 +545,39 @@ a{text-decoration: none;position: relative;}
 #footer .footerwrap a{color: #444;}
 #footer .footerwrap a:after{width: 0;}
 #footer .footer-info{float: right;font-size: 0.24rem;}
+#footer .footer-info span{margin-left: 0.2rem;}
 #footer .copyrights{color: #999;font-size: 0.24rem;}
+
+
+/*the bunny runner*/
+#bunnyRunner {width: 100%;height: 7rem;display: block;position: absolute;overflow:hidden;background: transparent;margin-top: -2.6rem; }
+#bunnyRunner .bunny-white{display: inline-block;background:url(../img/bunny.png) center center no-repeat;height: 3.74rem;width: 2.3rem;}
+#bunnyRunner .bunnyjump {animation: bunnyjump 0.8s ease-out infinite;-webkit-animation: bunnyjump 0.8s ease-out infinite;}
+#bunnyRunner .bunnyrun {position: absolute;margin-top: 2rem;width: 2.4rem;left: 50%;margin-left: -1.2rem;}
+@keyframes bunnyjump{
+  0%{
+    transform: translate3d(0%,0%,0%);
+  }
+  70%{
+    transform: translate3d(0%,-50%,0%);
+  }
+  100%{
+    transform: translate3d(0%,0%,0%);
+  }
+}
+@-webkit-keyframes bunnyjump{
+  0%{
+    transform: translate3d(0%,0%,0%);
+  }
+  70%{
+    transform: translate3d(0%,-50%,0%);
+  }
+  100%{
+    transform: translate3d(0%,0%,0%);
+  }
+}
+
+
 
 /*animation setting*/
 .animation-delay{

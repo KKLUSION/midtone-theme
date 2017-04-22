@@ -5,7 +5,7 @@
 <div class="container footerwrap">
 <div class="row">
     <div class="autuor-maininfo"></div>
-    <div class="footer-info"><span><a class="midtone-link" href="<?php $this->options->feedUrl(); ?>">RSS</a></span></div>
+    <div class="footer-info"><span><a class="midtone-link" href="<?php $this->options->themeUrl('sitemap.xml'); ?>">Sitemap</a></span><span><a class="midtone-link" href="<?php $this->options->feedUrl(); ?>">RSS</a></span></div>
     <div class="copyrights">
 	    <span>&copy; <?php echo date('Y'); ?> <a class="midtone-link" href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>.</span>
 	    <span><?php _e('Powered by <a class="midtone-link" href="http://www.typecho.org">Typecho</a>'); ?>.</span>

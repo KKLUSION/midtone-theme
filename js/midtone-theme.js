@@ -494,7 +494,6 @@ var hello = function(){
      console.log('theme design and code with <3 by mizodo.');
      console.log('for more infomation click https://blog.mizodo.com');
   }else{
-    return false;
   }
   });
 }
